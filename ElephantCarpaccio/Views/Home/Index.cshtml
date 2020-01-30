@@ -1,0 +1,22 @@
+﻿@model CarpaccioModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        @using (Html.BeginForm("ElephantCarpaccio", "Carpaccio",  FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.Label("Quantity")
+            <div style="margin-left: 10px">@Html.TextBoxFor(m => m.Quantity)</div>
+            <br />
+            @Html.Label("Product Price")
+            <div style="margin-left: 10px">@Html.TextBoxFor(m => m.ProductPrice)</div>
+            <br />
+            @Html.Label("State")
+            <div style="margin-left: 10px">
+                @Html.DropDownListFor(m => m.SelectedState, new SelectList(Enum.GetValues(typeof(States))), "- Please select a state -", new {@class = "form-control"})
+            </div>
+            <br />
+            <input type="submit" value="Submit" id="btnSubmit" />
+        }
+    </div>
